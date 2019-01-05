@@ -1,0 +1,29 @@
+tags:
+  - Schedule
+parameters:
+  - name: teacher
+    in: query
+    required: true
+    description: Teacher name
+    example: Слабінога Мар`ян Остапович
+    schema:
+      type: string
+  - name: from_date
+    in: query
+    required: true
+    description: Date in format dd.mm.yyyy
+    example: 12.8.2018
+    schema:
+      type: string
+  - name: to_date
+    in: query
+    required: true
+    description: Date in format dd.mm.yyyy
+    example: 15.10.2018
+    schema:
+      type: string
+responses:
+  200:
+    description: A list of results
+  404:
+    description: Lessons not found
