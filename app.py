@@ -1,5 +1,5 @@
 from flasgger import Swagger
-from flask import Flask
+from flask import Flask, redirect
 from flask_restful import Api
 from webargs.flaskparser import parser, abort
 import os
@@ -18,6 +18,11 @@ app.config['SWAGGER'] = {
 
 api = Api(app)
 swagger = Swagger(app)
+
+
+@app.route('/')
+def redirect_to_docs():
+    return redirect('/apidocs')
 
 
 @parser.error_handler
