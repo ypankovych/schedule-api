@@ -26,4 +26,4 @@ responses:
   200:
     description: A list of results
   404:
-    description: Lessons not found
+    description: Schedule/Teacher not found (be sure that you pass a correct teacher fullname)
