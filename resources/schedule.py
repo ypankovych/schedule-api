@@ -1,4 +1,5 @@
 import datetime as dt
+from functools import partial
 
 from flasgger import swag_from
 from flask_restful import Resource
@@ -6,7 +7,7 @@ from webargs import fields, ValidationError
 from webargs.flaskparser import use_kwargs
 
 from common.config import default_encoding
-from common.utils import parse
+from common.utils import parse, validate_kind
 
 
 def validate_date(date):
@@ -18,7 +19,7 @@ def validate_date(date):
 
 class Group(Resource):
     args = {
-        'group': fields.Str(required=True),
+        'group': fields.Str(required=True, validate=partial(validate_kind, 'groups')),
         'from_date': fields.Str(required=True, validate=validate_date),
         'to_date': fields.Str(required=True, validate=validate_date)
     }
@@ -35,7 +36,7 @@ class Group(Resource):
 
 class Teacher(Resource):
     args = {
-        'teacher': fields.Str(required=True),
+        'teacher': fields.Str(required=True, validate=partial(validate_kind, 'teachers')),
         'from_date': fields.Str(required=True, validate=validate_date),
         'to_date': fields.Str(required=True, validate=validate_date)
     }

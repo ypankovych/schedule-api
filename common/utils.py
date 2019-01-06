@@ -4,11 +4,18 @@ from functools import wraps
 
 import requests
 from bs4 import BeautifulSoup
+from webargs import ValidationError
 
 from common.config import *
 
 base_lesson = namedtuple('Base', ['date', 'verb', 'lessons'])
 lesson = namedtuple('Lesson', ['number', 'start', 'stop', 'description'])
+
+
+def validate_kind(kind, obj):
+    if obj.upper() in [x[kind[:-1]].upper() for x in get_full(kind)]:
+        return True
+    raise ValidationError(f'{kind[:-1]} does not exists')
 
 
 def lists_cached(func):

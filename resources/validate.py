@@ -2,16 +2,10 @@ from functools import partial
 
 from flasgger import swag_from
 from flask_restful import Resource
-from webargs import fields, ValidationError
+from webargs import fields
 from webargs.flaskparser import use_kwargs
 
-from common.utils import get_full
-
-
-def validate_kind(kind, obj):
-    if obj.upper() in [x[kind[:-1]].upper() for x in get_full(kind)]:
-        return True
-    raise ValidationError(f'{kind[:-1]} does not exists')
+from common.utils import get_full, validate_kind
 
 
 class GroupValidate(Resource):
