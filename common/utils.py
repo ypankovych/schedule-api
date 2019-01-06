@@ -9,6 +9,17 @@ base_lesson = namedtuple('Base', ['date', 'verb', 'lessons'])
 lesson = namedtuple('Lesson', ['number', 'start', 'stop', 'description'])
 
 
+def get_full(endpoint):
+    results = []
+    content = requests.get(endpoint).text
+    soup = BeautifulSoup(content, 'lxml').find_all('tr')
+    for dep in soup[1:]:
+        data = dep.find_all('td')
+        results.append({'department': data[0].text,
+                        'group': data[1].text})
+    return results
+
+
 def get_raw_content(s_date, e_date, entity):
     payload = {
         'edate': e_date,
@@ -52,4 +63,3 @@ def parse(entity, from_date, to_date):
     if not containers:
         return False
     return collect(containers)
-
