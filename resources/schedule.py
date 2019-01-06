@@ -36,7 +36,7 @@ class Group(Resource):
 
 class Teacher(Resource):
     args = {
-        'teacher': fields.Str(required=True, validate=partial(validate_kind, 'teachers')),
+        'teacher': fields.Str(required=True),
         'from_date': fields.Str(required=True, validate=validate_date),
         'to_date': fields.Str(required=True, validate=validate_date)
     }
