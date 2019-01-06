@@ -1,3 +1,4 @@
+description: Check if group exists
 tags:
   - Validate
 parameters:
