@@ -1,6 +1,8 @@
+import os
+
 import redis
 
-r = redis.Redis()
+r = redis.from_url(os.environ.get('REDIS_URL'))
 cache_time = 3600 * 4  # 4 hours
 default_encoding = 'windows-1251'
 url = 'http://194.44.112.6/cgi-bin/timetable.cgi?n=700'
