@@ -1,0 +1,15 @@
+tags:
+  - Validate
+parameters:
+  - name: group
+    in: query
+    required: true
+    description: Group name
+    example: КІ-18-1К
+    schema:
+      type: string
+responses:
+  200:
+    description: Group info
+  422:
+    description: Group does not exists

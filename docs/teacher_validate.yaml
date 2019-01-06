@@ -1,0 +1,15 @@
+tags:
+  - Validate
+parameters:
+  - name: teacher
+    in: query
+    required: true
+    description: Teacher name
+    example: Слабінога М.О.
+    schema:
+      type: string
+responses:
+  200:
+    description: Teacher info
+  422:
+    description: Teacher does not exists

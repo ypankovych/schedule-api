@@ -1,4 +1,6 @@
+import json
 from collections import namedtuple
+from functools import wraps
 
 import requests
 from bs4 import BeautifulSoup
@@ -9,14 +11,28 @@ base_lesson = namedtuple('Base', ['date', 'verb', 'lessons'])
 lesson = namedtuple('Lesson', ['number', 'start', 'stop', 'description'])
 
 
-def get_full(endpoint):
+def lists_cached(func):
+    @wraps(func)
+    def wrapper(kind):
+        from_cache = r.get(kind)
+        if not from_cache:
+            results = func(kind)
+            r.set(kind, json.dumps(results), ex=cache_time)
+            return results
+        return json.loads(from_cache)
+    return wrapper
+
+
+@lists_cached
+def get_full(kind):
     results = []
+    endpoint = endpoints[kind]
     content = requests.get(endpoint).text
     soup = BeautifulSoup(content, 'lxml').find_all('tr')
     for dep in soup[1:]:
         data = dep.find_all('td')
         results.append({'department': data[0].text,
-                        'group': data[1].text})
+                        kind[:-1]: data[1].text})
     return results
 
 
