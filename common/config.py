@@ -20,6 +20,6 @@ template = {
             "email": "flower.moor@gmail.com",
             "url": "https://ru.stackoverflow.com/users/236727/Павел-Дурманов?tab=profile",
         },
-        "version": "0.0.1"
+        "version": "1.0.0"
     },
 }
