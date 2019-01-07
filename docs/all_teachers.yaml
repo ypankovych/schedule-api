@@ -1,4 +1,4 @@
-description: Returns list of all teachers with their depatments
+description: Returns list of all teachers with their depatments (cached for 10 hours)
 tags:
   - Lists
 responses:
