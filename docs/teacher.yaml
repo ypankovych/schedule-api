@@ -24,7 +24,7 @@ parameters:
       type: string
   - name: chair
     in: query
-    description: If set to False, "Військова кафедра" will be replaced. (default true)
+    description: If set to False, "Військова кафедра" will be replaced.
     example: false
     schema:
       type: boolean
