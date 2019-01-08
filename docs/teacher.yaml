@@ -25,7 +25,7 @@ parameters:
   - name: chair
     in: query
     description: If set to False, "Військова кафедра" will be replaced. (default true)
-    example: False
+    example: 0
 responses:
   200:
     description: A list of results
