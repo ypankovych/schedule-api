@@ -24,11 +24,11 @@ parameters:
       type: string
   - name: chair
     in: query
-    description: If set to False, "Військова кафедра" will be replaced. (default True)
-    example: False
+    description: If set to False, "Військова кафедра" will be replaced. (default true)
+    example: false
     schema:
       type: boolean
-      default: True
+      default: true
 responses:
   200:
     description: A list of results
