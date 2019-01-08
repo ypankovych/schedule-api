@@ -72,7 +72,7 @@ def collect(containers, chair):
         date = container.h4.text.split()
         for each_tr in container.find_all('tr'):
             row = each_tr.find_all('td')
-            if row[-1].text.strip():
+            if row[-1].get_text(strip=True):
                 description = row[2].text.replace('\xa0', ' ')
                 if not chair:
                     if description.strip() == chair_desc:
