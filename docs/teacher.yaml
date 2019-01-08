@@ -22,6 +22,13 @@ parameters:
     example: 15.10.2018
     schema:
       type: string
+  - name: chair
+    in: query
+    description: If set to False, Військова кафедра will be replaced. (default True)
+    exanple: False
+    schema:
+      type: boolean
+      default: True
 responses:
   200:
     description: A list of results
