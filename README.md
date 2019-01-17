@@ -1,2 +1,2 @@
 # schedule-api
-https://ifntung-schedule.ml/
+https://www.ifntung-api.com/apidocs/
