@@ -18,7 +18,7 @@ class GroupValidate(Resource):
     @swag_from('../docs/group_validate.yaml')
     def get(group):
         for i in get_full('groups'):
-            if i['group'] == group.upper():
+            if i['group'].upper() == group.upper():
                 return i, 200
 
 
